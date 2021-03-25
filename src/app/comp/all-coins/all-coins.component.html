@@ -1,0 +1,8 @@
+<div class="wrap">
+  <ng-template [ngIf]="isLoading">
+    <app-loader></app-loader>
+  </ng-template>
+
+  <app-single-coin *ngFor="let coin of allCoins" [singleCoin]="coin">
+  </app-single-coin>
+</div>

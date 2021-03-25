@@ -1,0 +1,25 @@
+@import "../../variables";
+
+.wrap {
+  display: flex;
+  height: 45vh;
+  justify-content: center;
+  align-items: center;
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    height: 100px;
+    text-align: left;
+
+    h1 {
+      text-align: center;
+      font-size: 3rem;
+      line-height: 1.1;
+      font-weight: 300;
+      span {
+        font-weight: 700;
+      }
+    }
+  }
+}
