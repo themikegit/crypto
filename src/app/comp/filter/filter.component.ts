@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CryptoApiService } from 'src/app/crypto-api.service';
 
 @Component({
   selector: 'app-filter',
@@ -6,12 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./filter.component.scss'],
 })
 export class FilterComponent implements OnInit {
-  constructor() {}
+  constructor(private cryptoApi: CryptoApiService) {}
 
-  option = 1;
+  option = 'all';
 
   ngOnInit(): void {}
   onSelect() {
-    console.log(this.option);
+    this.cryptoApi
+      .getCoins()
+      .subscribe((res) => this.cryptoApi.coinsRes.next(res));
   }
 }

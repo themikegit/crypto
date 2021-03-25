@@ -14,7 +14,12 @@ export class AllCoinsComponent implements OnInit {
 
   ngOnInit(): void {
     this.cryptoApi
-      .getCoins(15)
-      .subscribe((res) => ((this.allCoins = res), (this.isLoading = false)));
+      .getCoins()
+      .subscribe((res) => this.cryptoApi.coinsRes.next(res));
+    this.cryptoApi.coinsRes.subscribe((res) => {
+      this.allCoins = res;
+      this.isLoading = false;
+      console.log(this.allCoins);
+    });
   }
 }

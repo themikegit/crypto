@@ -29,7 +29,6 @@ export class CoinDetailsComponent implements OnInit {
     this.cryptoApi.getCoinHistory(this.idRt).subscribe((res) => {
       this.coinStats = res;
       this.isLoading = false;
-      console.log(this.coinStats);
     });
   }
   ngAfterViewInit(): void {

@@ -5,8 +5,16 @@
         <h2>{{ singleCoin.name }}</h2>
         <h3>{{ singleCoin.symbol }}</h3>
       </div>
-      <div class="tag">
-        <h4>EXPLODING</h4>
+      <div
+        [ngStyle]="{
+          'background-color': exploding ? 'red' : 'green'
+        }"
+        class="tag"
+      >
+        <h4 *ngIf="exploding; else reg">EXPLODING</h4>
+        <ng-template #reg>
+          <h4>REGULAR</h4>
+        </ng-template>
       </div>
     </div>
     <div class="price">

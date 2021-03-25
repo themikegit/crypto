@@ -12,14 +12,10 @@ export class CryptoApiService {
     this.coinsRes = new Subject();
   }
 
-  getCoins(num) {
+  getCoins(num = 50) {
     return this.http
       .get(`https://api.coinpaprika.com/v1/tickers`)
-      .pipe(
-        map((coins: any) =>
-          coins.filter((coin) => coin.rank < num && coin.rank > 0)
-        )
-      );
+      .pipe(map((coins: any) => coins.filter((coin, index) => index < num)));
   }
 
   getCoinDetails(coin_id) {
