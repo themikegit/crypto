@@ -13,9 +13,11 @@ import { NavigationComponent } from './comp/navigation/navigation.component';
 import { LoaderComponent } from './comp/loader/loader.component';
 import { FilterComponent } from './comp/filter/filter.component';
 import { FormsModule } from '@angular/forms';
+import { GoProComponent } from './views/go-pro/go-pro.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
+  { path: 'go-pro', component: GoProComponent },
   { path: 'coin/:id', component: CoinDetailsComponent },
 ];
 
@@ -31,6 +33,7 @@ const routes: Routes = [
     NavigationComponent,
     LoaderComponent,
     FilterComponent,
+    GoProComponent,
   ],
   imports: [
     BrowserModule,
