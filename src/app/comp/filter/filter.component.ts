@@ -6,15 +6,22 @@ import { CryptoApiService } from 'src/app/crypto-api.service';
   templateUrl: './filter.component.html',
   styleUrls: ['./filter.component.scss'],
 })
-export class FilterComponent implements OnInit {
+export class FilterComponent {
   constructor(private cryptoApi: CryptoApiService) {}
 
-  option = 'all';
+  option = false;
 
-  ngOnInit(): void {}
   onSelect() {
+    let volumeValue;
+    if (this.option) {
+      volumeValue = 1_500_000_000;
+    } else {
+      volumeValue = 10;
+    }
+
+    console.log(this.option);
     this.cryptoApi
-      .getCoins()
+      .getCoins(undefined, volumeValue)
       .subscribe((res) => this.cryptoApi.coinsRes.next(res));
   }
 }

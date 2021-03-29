@@ -12,7 +12,7 @@ export class SingleCoinComponent implements OnInit {
 
   exploding: boolean;
   ngOnInit(): void {
-    if (this.singleCoin.quotes.USD.volume_24h > 2000000000) {
+    if (this.singleCoin.quotes.USD.volume_24h > 1_500_000_000) {
       this.exploding = true;
     }
   }

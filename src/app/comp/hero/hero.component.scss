@@ -9,16 +9,19 @@
   .content {
     display: flex;
     flex-direction: column;
-    height: 100px;
     text-align: left;
 
-    h1 {
-      text-align: center;
-      font-size: 3rem;
-      line-height: 1.1;
-      font-weight: 300;
-      span {
-        font-weight: 700;
+    .title {
+      margin-bottom: 20px;
+      h1 {
+        text-align: center;
+        font-size: 3rem;
+        line-height: 1.1;
+        font-weight: 300;
+        height: 100px;
+        span {
+          font-weight: 700;
+        }
       }
     }
   }

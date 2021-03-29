@@ -19,7 +19,6 @@ export class AllCoinsComponent implements OnInit {
     this.cryptoApi.coinsRes.subscribe((res) => {
       this.allCoins = res;
       this.isLoading = false;
-      console.log(this.allCoins);
     });
   }
 }

@@ -12,10 +12,17 @@ export class CryptoApiService {
     this.coinsRes = new Subject();
   }
 
-  getCoins(num = 50) {
+  getCoins(num = 50, volumeValue = 10) {
     return this.http
       .get(`https://api.coinpaprika.com/v1/tickers`)
-      .pipe(map((coins: any) => coins.filter((coin, index) => index < num)));
+      .pipe(
+        map((coins: any) =>
+          coins.filter(
+            (coin: any, index: number) =>
+              index < num && coin.quotes.USD.volume_24h > volumeValue
+          )
+        )
+      );
   }
 
   getCoinDetails(coin_id) {
