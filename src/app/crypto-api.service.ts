@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map, filter } from 'rxjs/operators';
+import { map, debounceTime } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 
 @Injectable({
@@ -14,7 +14,7 @@ export class CryptoApiService {
 
   getCoins(num = 50, volumeValue = 10) {
     return this.http
-      .get(`https://api.coinpaprika.com/v1/tickers`)
+      .get(`Xhttps://api.coinpaprika.com/v1/tickers`)
       .pipe(
         map((coins: any) =>
           coins.filter(

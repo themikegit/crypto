@@ -3,36 +3,9 @@
 .wrap {
   display: flex;
   justify-content: space-between;
-
   background-color: $dark;
   color: white;
   padding: 0 5%;
   height: 65px;
   overflow-y: scroll;
-
-  .tick {
-    padding: 8px 5px;
-    min-width: 150px;
-    span {
-      font-weight: 300;
-    }
-    .stats {
-      display: flex;
-      align-items: center;
-    }
-    h4 {
-      font-weight: 800;
-    }
-  }
-  .status-red {
-    fill: red;
-    margin: 0 5px;
-  }
-  .status-green {
-    fill: green;
-    margin: 0 5px;
-    color: #92c9ff31;
-
-    transform: rotate(180deg);
-  }
 }

@@ -1,13 +1,28 @@
 .wrap {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
   padding: 2% 5%;
-  .logo {
-    height: 40px;
-    width: 300px;
-    background-image: url("/assets/logoComplete.svg");
-    background-repeat: no-repeat;
+  .brand {
+    flex: 1 1 0;
+    .logo {
+      height: 40px;
+      width: 230px;
+      background-image: url("/assets/logoComplete.svg");
+      background-repeat: no-repeat;
+    }
+  }
+  .search {
+    display: flex;
+    justify-content: center;
+    flex: 1 1 0;
+  }
+  .links {
+    display: flex;
+    justify-content: flex-end;
+    flex: 1 1 0;
+
+    min-width: 50px;
   }
 }
 
