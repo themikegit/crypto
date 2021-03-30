@@ -22,13 +22,13 @@ export class CoinDetailsComponent implements OnInit {
   coinStats: any;
   isLoading = true;
 
-  ngOnInit(): void {
-    this.cryptoApi
-      .getCoinDetails(this.idRt)
-      .subscribe((res) => (this.details = res));
+  ngOnInit() {
+    this.cryptoApi.getCoinDetails(this.idRt).subscribe((res) => {
+      this.details = res;
+      this.isLoading = false;
+    });
     this.cryptoApi.getCoinHistory(this.idRt).subscribe((res) => {
       this.coinStats = res;
-      this.isLoading = false;
     });
   }
   ngAfterViewInit(): void {

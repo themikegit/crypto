@@ -14,7 +14,7 @@ export class CryptoApiService {
 
   getCoins(num = 50, volumeValue = 10) {
     return this.http
-      .get(`Xhttps://api.coinpaprika.com/v1/tickers`)
+      .get(`https://api.coinpaprika.com/v1/tickers`)
       .pipe(
         map((coins: any) =>
           coins.filter(
