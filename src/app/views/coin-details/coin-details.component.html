@@ -1,12 +1,10 @@
 <div class="outer">
-  <ng-template [ngIf]="isLoading">
+  <!-- <ng-template #load>
     <app-loader></app-loader>
-  </ng-template>
+  </ng-template> -->
   <div class="wrap">
     <div routerLink="/" class="close">
       <svg
-        xmlns="http://www.w3.org/2000/svg"
-        xmlns:xlink="http://www.w3.org/1999/xlink"
         aria-hidden="true"
         focusable="false"
         width="1em"
@@ -32,21 +30,21 @@
     <div class="header">
       <div class="header-top">
         <div class="title">
-          <h2>{{ details.name }}</h2>
-          <h3>{{ details.symbol }}</h3>
+          <h2>{{ coinComplete[0].name }}</h2>
+          <h3>{{ coinComplete[0].symbol }}</h3>
         </div>
         <div class="tag">
           <h4>EXPLODING</h4>
         </div>
       </div>
       <div class="price">
-        <h2>{{ coinStats.quotes.USD.price | currency }}</h2>
+        <h2>{{ coinComplete[1].quotes.USD.price | currency }}</h2>
       </div>
     </div>
     <div class="stats">
       <div class="daily">
         <h5>24 hour</h5>
-        <p>{{ coinStats.quotes.USD.percent_change_24h }} %</p>
+        <p>{{ coinComplete[1].quotes.USD.percent_change_24h }} %</p>
       </div>
       <div class="market-cap">
         <h5>market cap</h5>
@@ -64,7 +62,7 @@
               d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"
             />
           </svg>
-          <p>{{ coinStats.quotes.USD.market_cap_change_24h }} %</p>
+          <p>{{ coinComplete[1].quotes.USD.market_cap_change_24h }} %</p>
         </div>
       </div>
       <div class="searches">
@@ -78,7 +76,7 @@
     </div>
     <div class="description">
       <p>
-        {{ details.description }}
+        {{ coinComplete[0].description }}
       </p>
     </div>
 
