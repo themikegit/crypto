@@ -14,28 +14,26 @@ export class CoinDetailsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private cryptoApi: CryptoApiService,
-    private buildChart: BuildChartService
+    private chart: BuildChartService
   ) {
     this.idRt = this.route.snapshot.params.id;
   }
 
   idRt: string;
-  details$: Observable<any>;
-  coinStats: any;
+  coinComplete: any[];
   isLoading = true;
-  chartData;
 
   ngOnInit() {
     let coinDetails = this.cryptoApi.getCoinDetails(this.idRt);
     let coinHistory = this.cryptoApi.getCoinHistory(this.idRt);
 
-    // forkJoin([coinDetails, coinHistory]).subscribe((res) => console.log(res));
-
-    this.details$ = forkJoin([coinDetails, coinHistory]);
-    this.cryptoApi.getCoinHistory(this.idRt).subscribe((res: any) => {
-      this.chartData = res.quotes.USD;
-      console.log(this.chartData);
+    forkJoin([coinDetails, coinHistory]).subscribe((res) => {
+      this.coinComplete = res;
+      this.isLoading = false;
     });
+
+    // **** details as observable. use async pipe in component. How to take data for chart ****
+    // this.details$ = forkJoin([coinDetails, coinHistory]);
 
     // **** Concat operator - solution for nested observables. bad in this case ****
     // this.cryptoApi
@@ -48,6 +46,6 @@ export class CoinDetailsComponent implements OnInit {
     //   .subscribe((res) => console.log('result total', res));
   }
   ngAfterViewInit() {
-    this.buildChart.buildChart(this.idRt, this.chartData);
+    this.chart.buildChart(this.idRt, this.coinComplete[1].quotes.USD);
   }
 }
