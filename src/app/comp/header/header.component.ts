@@ -9,7 +9,7 @@ import { CryptoApiService } from 'src/app/crypto-api.service';
 export class HeaderComponent implements OnInit {
   constructor(private cryptoApi: CryptoApiService) {}
 
-  coins;
+  coins = [];
   ngOnInit(): void {
     this.cryptoApi.getCoins(6).subscribe((res) => {
       this.coins = res;

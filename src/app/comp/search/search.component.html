@@ -1,10 +1,10 @@
 <div class="wrap">
   <form [formGroup]="searchCoins">
     <input
+      placeholder="search coins"
       (ngModelChange)="onSearchChange()"
       formControlName="search"
       type="text"
     />
   </form>
-  <h1 *ngIf="filteredArr.length == 0">NO RESULTS FOUND</h1>
 </div>

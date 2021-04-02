@@ -4,9 +4,9 @@
   align-items: center;
   padding: 2% 5%;
   .brand {
-    flex: 1 1 0;
+    flex: 1 0 0;
     .logo {
-      height: 40px;
+      height: 50px;
       width: 230px;
       background-image: url("/assets/logoComplete.svg");
       background-repeat: no-repeat;
@@ -20,15 +20,26 @@
   .links {
     display: flex;
     justify-content: flex-end;
-    flex: 1 1 0;
+    flex: 1 0 0;
 
     min-width: 50px;
   }
 }
 
-@media only screen and (max-device-width: 389px) {
-  .logo {
-    height: 20px;
-    width: 100px;
+@media only screen and (max-device-width: 736px) {
+  .wrap {
+    flex-direction: column;
+    .brand {
+      order: -2;
+      .logo {
+        height: 30px;
+        width: 200px;
+      }
+    }
+
+    .links {
+      order: -1;
+      margin-bottom: 5px;
+    }
   }
 }

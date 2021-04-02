@@ -9,17 +9,18 @@ import { CryptoApiService } from 'src/app/crypto-api.service';
 export class FilterComponent {
   constructor(private cryptoApi: CryptoApiService) {}
 
+  // two-way binding. Listening toggler
   option = false;
 
   onSelect() {
-    let volumeValue;
+    let volumeValue: number;
     if (this.option) {
       volumeValue = 1_500_000_000;
     } else {
       volumeValue = 10;
     }
 
-    console.log(this.option);
+    //How to omit function parametar? Using undefined now.
     this.cryptoApi
       .getCoins(undefined, volumeValue)
       .subscribe((res) => this.cryptoApi.coinsRes.next(res));

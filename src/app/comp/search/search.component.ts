@@ -11,36 +11,13 @@ import { SearchModelService } from 'src/app/search-model.service';
   styleUrls: ['./search.component.scss'],
 })
 export class SearchComponent {
-  constructor(
-    private searchModel: SearchModelService,
-    private cryptoApi: CryptoApiService
-  ) {}
+  constructor(private searchModel: SearchModelService) {}
 
   searchCoins = new FormGroup({
     search: new FormControl(''),
   });
 
-  filteredArr = ['initial'];
-
   onSearchChange() {
-    //send info of filed search filed and hide hero text
     this.searchModel.modelValue.next(this.searchCoins.value.search);
-    // filtering withAPI Calls
-    // this.cryptoApi
-    //   .getCoins()
-    //   .pipe(
-    //     debounceTime(2500),
-    //     map((result: any) =>
-    //       result.filter((res) =>
-    //         res.name
-    //           .toLowerCase()
-    //           .includes(this.searchCoins.value.search.toLowerCase())
-    //       )
-    //     )
-    //   )
-    //   .subscribe((res) => {
-    //     this.cryptoApi.coinsRes.next(res);
-    //     this.filteredArr = res;
-    //   });
   }
 }

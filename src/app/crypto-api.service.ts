@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map, debounceTime } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 
 @Injectable({
@@ -25,11 +25,11 @@ export class CryptoApiService {
       );
   }
 
-  getCoinDetails(coin_id) {
+  getCoinDetails(coin_id: string) {
     return this.http.get(`https://api.coinpaprika.com/v1/coins/${coin_id}`);
   }
 
-  getCoinHistory(coin_id) {
+  getCoinHistory(coin_id: string) {
     return this.http.get(`https://api.coinpaprika.com/v1/tickers/${coin_id}`);
   }
 }

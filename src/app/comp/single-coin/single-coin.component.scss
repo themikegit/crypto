@@ -64,4 +64,9 @@
     margin-bottom: 10px;
     font-size: 0.8rem;
   }
+  transition: 100ms ease-in-out;
+  &:hover {
+    transform: translateY(-10px);
+    transition: 200ms ease-in-out;
+  }
 }

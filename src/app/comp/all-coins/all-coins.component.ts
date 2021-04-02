@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { debounceTime } from 'rxjs/operators';
+import { debounceTime, tap } from 'rxjs/operators';
 import { CryptoApiService } from 'src/app/crypto-api.service';
 import { SearchModelService } from 'src/app/search-model.service';
 
@@ -19,17 +19,17 @@ export class AllCoinsComponent implements OnInit {
   searchTerm: string;
 
   ngOnInit() {
-    // record user search term
-    this.searchModel.modelValue
-      .pipe(debounceTime(1000))
-      .subscribe((res) => (this.searchTerm = res));
-    // initial load of all coins
+    // subscribe to API result and update subject with the result.
     this.cryptoApi
       .getCoins()
       .subscribe((res) => this.cryptoApi.coinsRes.next(res));
     this.cryptoApi.coinsRes.subscribe((res) => {
       this.allCoins = res;
       this.isLoading = false;
+    });
+    // subscribe to search input value - used for filter pipe in template.
+    this.searchModel.modelValue.pipe(debounceTime(1000)).subscribe((res) => {
+      this.searchTerm = res;
     });
   }
 }
