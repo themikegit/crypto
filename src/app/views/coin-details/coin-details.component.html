@@ -2,84 +2,85 @@
   <!-- <ng-template #load>
     <app-loader></app-loader>
   </ng-template> -->
-  <div class="wrap">
-    <div routerLink="/" class="close">
-      <svg
-        aria-hidden="true"
-        focusable="false"
-        width="1em"
-        height="1em"
-        style="
-          -ms-transform: rotate(360deg);
-          -webkit-transform: rotate(360deg);
-          transform: rotate(360deg);
-        "
-        preserveAspectRatio="xMidYMid meet"
-        viewBox="0 0 16 16"
-      >
-        <g fill="#626262">
-          <path
-            fill-rule="evenodd"
-            clip-rule="evenodd"
-            d="M8 8.707l3.646 3.647l.708-.707L8.707 8l3.647-3.646l-.707-.708L8 7.293L4.354 3.646l-.707.708L7.293 8l-3.646 3.646l.707.708L8 8.707z"
-          />
-        </g>
-      </svg>
-    </div>
-
-    <div class="header">
-      <div class="header-top">
-        <div class="title">
-          <h2>{{ coinComplete[0].name }}</h2>
-          <h3>{{ coinComplete[0].symbol }}</h3>
-        </div>
-        <div class="tag">
-          <h4>EXPLODING</h4>
-        </div>
-      </div>
-      <div class="price">
-        <h2>{{ coinComplete[1].quotes.USD.price | currency }}</h2>
-      </div>
-    </div>
-    <div class="stats">
-      <div class="daily">
-        <h5>24 hour</h5>
-        <p>{{ coinComplete[1].quotes.USD.percent_change_24h }} %</p>
-      </div>
-      <div class="market-cap">
-        <h5>market cap</h5>
-        <div class="value">
-          <svg
-            width="1em"
-            height="1em"
-            [ngClass]="{
-              'status-green': 2 > 0,
-              'status-red': -3 < 0
-            }"
-            viewBox="0 0 16 16"
-          >
+  <div class="wrap" >
+    <ng-container *ngIf="!isLoading">
+      <div routerLink="/" class="close">
+        <svg
+          aria-hidden="true"
+          focusable="false"
+          width="1em"
+          height="1em"
+          style="
+            -ms-transform: rotate(360deg);
+            -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+          "
+          preserveAspectRatio="xMidYMid meet"
+          viewBox="0 0 16 16"
+        >
+          <g fill="#626262">
             <path
-              d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M8 8.707l3.646 3.647l.708-.707L8.707 8l3.647-3.646l-.707-.708L8 7.293L4.354 3.646l-.707.708L7.293 8l-3.646 3.646l.707.708L8 8.707z"
             />
-          </svg>
-          <p>{{ coinComplete[1].quotes.USD.market_cap_change_24h }} %</p>
+          </g>
+        </svg>
+      </div>
+
+      <div class="header">
+        <div class="header-top">
+          <div class="title">
+            <h2>{{ coinComplete[0].name }}</h2>
+            <h3>{{ coinComplete[0].symbol }}</h3>
+          </div>
+          <div class="tag">
+            <h4>EXPLODING</h4>
+          </div>
+        </div>
+        <div class="price">
+          <h2>{{ coinComplete[1].quotes.USD.price | currency }}</h2>
         </div>
       </div>
-      <div class="searches">
-        <h5>searches/mo</h5>
-        <p>2.9K</p>
+      <div class="stats">
+        <div class="daily">
+          <h5>24 hour</h5>
+          <p>{{ coinComplete[1].quotes.USD.percent_change_24h }} %</p>
+        </div>
+        <div class="market-cap">
+          <h5>market cap</h5>
+          <div class="value">
+            <svg
+              width="1em"
+              height="1em"
+              [ngClass]="{
+                'status-green': 2 > 0,
+                'status-red': -3 < 0
+              }"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"
+              />
+            </svg>
+            <p>{{ coinComplete[1].quotes.USD.market_cap_change_24h }} %</p>
+          </div>
+        </div>
+        <div class="searches">
+          <h5>searches/mo</h5>
+          <p>2.9K</p>
+        </div>
+        <div class="growth">
+          <h5>growth</h5>
+          <p>880%</p>
+        </div>
       </div>
-      <div class="growth">
-        <h5>growth</h5>
-        <p>880%</p>
+      <div class="description">
+        <p>
+          {{ coinComplete[0].description }}
+        </p>
       </div>
-    </div>
-    <div class="description">
-      <p>
-        {{ coinComplete[0].description }}
-      </p>
-    </div>
-
+  </ng-container>
     <canvas id="{{ idRt }}"></canvas>
   </div>
 </div>
