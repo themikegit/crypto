@@ -18,6 +18,13 @@ export class AllCoinsComponent implements OnInit {
   isLoading = true;
   searchTerm: string;
 
+  /**
+   * @Comment
+   * It is a good practice to extract everything to separate methods and call
+   * them inside ngOnInit. example check line 44
+   * This way you achieve readability
+   */
+
   ngOnInit() {
     // subscribe to API result and update subject with the result.
     this.cryptoApi
@@ -33,3 +40,15 @@ export class AllCoinsComponent implements OnInit {
     });
   }
 }
+
+
+/**
+ * ngOnInit() {
+ *  this.getCoins();
+ * }
+ *
+ *
+ * getCoins() {
+ *  this.cryptoApi.getCoins()...
+ * }
+ */
