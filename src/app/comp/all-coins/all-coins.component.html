@@ -1,8 +1,10 @@
 <div class="outer">
   <pagination-controls
     class="my-pagination"
+    directionLinks="false"
     previousLabel=""
     nextLabel=""
+    (pageBoundsCorrection)="p = $event"
     (pageChange)="p = $event"
   ></pagination-controls>
   <ng-template [ngIf]="isLoading">

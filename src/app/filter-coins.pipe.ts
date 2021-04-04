@@ -14,7 +14,6 @@ export class FilterCoinsPipe implements PipeTransform {
         (coin) =>
           coin.name.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1
       );
-      // this.serachServ.isFilterResult.next(filteredCoins);
 
       return filteredCoins;
     }

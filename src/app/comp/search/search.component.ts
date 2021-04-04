@@ -16,6 +16,7 @@ export class SearchComponent {
 
   ngOnInit() {
     this.searchCoins.valueChanges.subscribe((res) => {
+      console.log(res);
       this.searchModel.modelValue.next(res.search);
     });
   }

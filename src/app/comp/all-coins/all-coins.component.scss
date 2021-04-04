@@ -20,10 +20,3 @@
   background: #233dbd !important;
   border-radius: 8px;
 }
-
-.my-pagination ::ng-deep .ngx-pagination .pagination-previous a::before,
-.my-pagination ::ng-deep .ngx-pagination .pagination-previous.disabled::before,
-.my-pagination ::ng-deep .ngx-pagination .pagination-next a::after,
-.my-pagination ::ng-deep .ngx-pagination .pagination-next.disabled::after {
-  display: none;
-}

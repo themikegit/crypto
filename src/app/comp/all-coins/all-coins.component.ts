@@ -35,17 +35,11 @@ export class AllCoinsComponent implements OnInit {
 
   provideFilterTerm() {
     // subscribe to search input value - used for filter pipe in template.
-
-    console.log(this.isLoading);
     this.searchModel.modelValue
-      .pipe(
-        tap(() => (this.isLoading = true)),
-        debounceTime(1000)
-      )
+      .pipe(tap(() => (this.isLoading = true)))
       .subscribe((res) => {
         this.searchTerm = res;
         this.isLoading = false;
-        console.log(this.isLoading);
       });
   }
 
