@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Subject } from 'rxjs';
-import { debounceTime, map } from 'rxjs/operators';
-import { CryptoApiService } from 'src/app/crypto-api.service';
 import { SearchModelService } from 'src/app/search-model.service';
 
 @Component({
@@ -17,7 +14,9 @@ export class SearchComponent {
     search: new FormControl(''),
   });
 
-  onSearchChange() {
-    this.searchModel.modelValue.next(this.searchCoins.value.search);
+  ngOnInit() {
+    this.searchCoins.valueChanges.subscribe((res) => {
+      this.searchModel.modelValue.next(res.search);
+    });
   }
 }

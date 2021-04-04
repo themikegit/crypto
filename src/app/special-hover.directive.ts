@@ -18,9 +18,12 @@ export class SpecialHoverDirective implements OnInit {
   //@ViewChild('hideView') hideViewRef: ElementRef;
 
   @HostListener('mouseenter') hoverin() {
-    this.rendered.setStyle(this.eleRe.nativeElement, 'opacity', '1');
+    this.rendered.addClass(this.eleRe.nativeElement.childNodes[3], 'hoverin');
   }
   @HostListener('mouseleave') hoverout() {
-    this.rendered.setStyle(this.eleRe.nativeElement, 'opacity', '0.5');
+    this.rendered.removeClass(
+      this.eleRe.nativeElement.childNodes[3],
+      'hoverin'
+    );
   }
 }

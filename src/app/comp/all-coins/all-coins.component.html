@@ -1,11 +1,27 @@
-<div #eleRef class="wrap">
+<div class="outer">
+  <pagination-controls
+    class="my-pagination"
+    previousLabel=""
+    nextLabel=""
+    (pageChange)="p = $event"
+  ></pagination-controls>
   <ng-template [ngIf]="isLoading">
     <app-loader></app-loader>
   </ng-template>
-
-  <app-single-coin
-    *ngFor="let coin of allCoins | filterCoins: searchTerm"
-    [singleCoin]="coin"
-  >
-  </app-single-coin>
+  <div [ngStyle]="{ opacity: isLoading ? 0.3 : 1 }" class="wrap">
+    <app-single-coin
+      *ngFor="
+        let coin of allCoins
+          | filterCoins: searchTerm
+          | paginate: { itemsPerPage: 6, currentPage: p }
+      "
+      [singleCoin]="coin"
+    >
+    </app-single-coin>
+    <ng-template
+      [ngIf]="!(allCoins | filterCoins: searchTerm).length && !isLoading"
+    >
+      <h1>NO RESULTS FOUND</h1>
+    </ng-template>
+  </div>
 </div>

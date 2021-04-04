@@ -21,7 +21,6 @@
       <h2>{{ singleCoin.quotes.USD.price | currency }}</h2>
     </div>
   </div>
-
   <div class="stats">
     <div class="daily">
       <h5>24 hour</h5>
@@ -29,7 +28,6 @@
     </div>
     <div class="market-cap">
       <h5>market cap</h5>
-
       <div class="value">
         <svg
           width="1em"
@@ -62,5 +60,7 @@
       decentralized digital...
     </p>
   </div>
-  <canvas id="{{ singleCoin.id }}"></canvas>
+  <div class="chartwrap">
+    <canvas id="{{ singleCoin.id }}"></canvas>
+  </div>
 </div>

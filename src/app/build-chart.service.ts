@@ -8,7 +8,7 @@ export class BuildChartService {
   constructor() {}
 
   buildChart(id: string, data: any) {
-    console.log(document.getElementById(id));
+    // console.log(document.getElementById(id));
     Chart.defaults.global.legend.display = false;
     Chart.defaults.scale.gridLines.display = false;
     new Chart(id, {

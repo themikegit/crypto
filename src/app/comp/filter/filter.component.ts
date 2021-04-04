@@ -11,31 +11,17 @@ export class FilterComponent {
 
   // two-way binding. Listening toggler
   option = false;
+  explodingLimit = 1_500_000_000;
 
   onSelect() {
-    let volumeValue: number;
     if (this.option) {
-      volumeValue = 1_500_000_000;
+      this.cryptoApi
+        .getCoins(undefined, this.explodingLimit)
+        .subscribe((res) => this.cryptoApi.coinsRes.next(res));
     } else {
-      volumeValue = 10;
+      this.cryptoApi
+        .getCoins(undefined, 10)
+        .subscribe((res) => this.cryptoApi.coinsRes.next(res));
     }
-
-    //How to omit function parametar? Using undefined now.
-
-    /**
-     * @Comment
-     * Function argument/parameter can't be ommited
-     * Think about what exactly you are trying to achive here
-     * 1. optional parameters always go at the end and can be marked with ? check line 39
-     * 2. using undefined is not a good practice, if you want a "value" that actually is not an value use null
-     */
-    this.cryptoApi
-      .getCoins(undefined, volumeValue)
-      .subscribe((res) => this.cryptoApi.coinsRes.next(res));
   }
 }
-
-
-/**
- * testFunction(required, optional?) { ... }
- */

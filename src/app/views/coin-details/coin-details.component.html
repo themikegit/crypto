@@ -1,9 +1,9 @@
 <div class="outer">
-  <!-- <ng-template #load>
+  <ng-template #load>
     <app-loader></app-loader>
-  </ng-template> -->
-  <div class="wrap" >
-    <ng-container *ngIf="!isLoading">
+  </ng-template>
+  <div class="wrap">
+    <ng-container *ngIf="!isLoading; else load">
       <div routerLink="/" class="close">
         <svg
           aria-hidden="true"
@@ -80,7 +80,7 @@
           {{ coinComplete[0].description }}
         </p>
       </div>
-  </ng-container>
+    </ng-container>
     <canvas id="{{ idRt }}"></canvas>
   </div>
 </div>

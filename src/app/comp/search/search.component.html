@@ -6,11 +6,6 @@
     this.searchCoins.valueChanges.subscribe...
    -->
   <form [formGroup]="searchCoins">
-    <input
-      placeholder="search coins"
-      (ngModelChange)="onSearchChange()"
-      formControlName="search"
-      type="text"
-    />
+    <input placeholder="search coins" formControlName="search" type="text" />
   </form>
 </div>
