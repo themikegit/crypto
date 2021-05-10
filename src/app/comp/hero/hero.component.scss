@@ -5,21 +5,38 @@
   height: 45vh;
   justify-content: center;
   align-items: center;
+  transition: 0.2s ease-in-out;
 
   .content {
     display: flex;
     flex-direction: column;
-    height: 100px;
     text-align: left;
 
-    h1 {
-      text-align: center;
-      font-size: 3rem;
-      line-height: 1.1;
-      font-weight: 300;
-      span {
-        font-weight: 700;
+    .title {
+      margin-bottom: 20px;
+
+      h1 {
+        text-align: center;
+        font-size: 3rem;
+        line-height: 1.1;
+        font-weight: 300;
+        height: 100px;
+        span {
+          font-weight: 700;
+        }
       }
     }
+  }
+}
+
+.disappear {
+  height: 0vh;
+  opacity: 0;
+  transition: 0.4s ease-in-out;
+}
+
+@media screen and (max-width: 600px) {
+  .title h1 {
+    font-size: 2.2rem !important;
   }
 }

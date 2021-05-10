@@ -1,7 +1,7 @@
-@import "./../../../variables";
+@import "./../../variables";
 
 .wrap {
-  width: 400px;
+  max-width: 400px;
   padding: 20px;
   border-radius: 5px;
   background-color: white;
@@ -23,7 +23,6 @@
         }
       }
       .tag {
-        background-color: $green;
         font-size: 0.8rem;
         letter-spacing: 2px;
         padding: 5px 10px;
@@ -65,4 +64,18 @@
     margin-bottom: 10px;
     font-size: 0.8rem;
   }
+  transition: 100ms ease-in-out;
+  &:hover {
+    transform: translateY(-10px);
+    transition: 200ms ease-in-out;
+  }
+  // .chartwrap {
+  //   height: 0px;
+  //   overflow: hidden;
+  // }
+
+  // .hoverin {
+  //   height: 200px;
+  //   transition: 500ms ease;
+  // }
 }

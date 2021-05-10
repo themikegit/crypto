@@ -1,0 +1,19 @@
+@import "./../../variables";
+
+.wrap {
+  input {
+    border: 1px solid $blue;
+    border-radius: 7px;
+    padding: 4px;
+    margin-bottom: 5px;
+  }
+  ::placeholder {
+    font-size: 0.8rem;
+    color: rgb(155, 155, 155);
+  }
+  h1 {
+    position: absolute;
+    font-size: 1.3rem;
+    color: #bdbdbd;
+  }
+}

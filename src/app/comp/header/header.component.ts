@@ -9,9 +9,20 @@ import { CryptoApiService } from 'src/app/crypto-api.service';
 export class HeaderComponent implements OnInit {
   constructor(private cryptoApi: CryptoApiService) {}
 
-  coins;
+  coins = [];
   ngOnInit(): void {
-    this.cryptoApi.getCoins(7).subscribe((res) => {
+
+    /**
+     * @Comment
+     * in this case 6 is something we call a MAGIC NUMBER
+     * for aanother person this can be hard to understand why you are using a 6
+     * good practive is to define a constant or propert with verbose name: e.g.
+     *
+     * perPage = 6;
+     *
+     * or for whatever 6 is used..
+     */
+    this.cryptoApi.getCoins(6).subscribe((res) => {
       this.coins = res;
     });
   }

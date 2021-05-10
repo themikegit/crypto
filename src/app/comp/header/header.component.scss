@@ -7,29 +7,5 @@
   color: white;
   padding: 0 5%;
   height: 65px;
-
-  .tick {
-    padding: 8px 0;
-    span {
-      font-weight: 300;
-    }
-    .stats {
-      display: flex;
-      align-items: center;
-    }
-    h4 {
-      font-weight: 800;
-    }
-  }
-  .status-red {
-    fill: red;
-    margin: 0 5px;
-  }
-  .status-green {
-    fill: green;
-    margin: 0 5px;
-    color: #92c9ff31;
-
-    transform: rotate(180deg);
-  }
+  overflow-y: scroll;
 }

@@ -1,0 +1,11 @@
+<div class="wrap">
+  <!--
+    @Comment
+    Ng Model change should not be used with reactive forms.
+    Instead subscribe to formGroup. e.g
+    this.searchCoins.valueChanges.subscribe...
+   -->
+  <form [formGroup]="searchCoins">
+    <input placeholder="search coins" formControlName="search" type="text" />
+  </form>
+</div>

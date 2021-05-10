@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SearchModelService } from 'src/app/search-model.service';
 import Typed from 'typed.js';
 
 @Component({
@@ -7,9 +8,15 @@ import Typed from 'typed.js';
   styleUrls: ['./hero.component.scss'],
 })
 export class HeroComponent implements OnInit {
-  constructor() {}
+  constructor(private searchModel: SearchModelService) {}
+
+  isTouched;
 
   ngOnInit(): void {
+    this.searchModel.modelValue.subscribe((res) => {
+      this.isTouched = res;
+    });
+
     const options = {
       strings: ['Exchange Feauters', 'Market CAP', 'Volume Stats'],
       typeSpeed: 80,

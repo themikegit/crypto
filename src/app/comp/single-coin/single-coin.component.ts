@@ -10,7 +10,13 @@ export class SingleCoinComponent implements OnInit {
   @Input() singleCoin: any;
   constructor(private buildChart: BuildChartService) {}
 
-  ngOnInit(): void {}
+  exploding: boolean;
+  ngOnInit(): void {
+    // @Comment - again MAGIC Number
+    if (this.singleCoin.quotes.USD.volume_24h > 1_500_000_000) {
+      this.exploding = true;
+    }
+  }
 
   ngAfterViewInit(): void {
     this.buildChart.buildChart(this.singleCoin.id, this.singleCoin.quotes.USD);

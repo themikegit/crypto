@@ -1,7 +1,7 @@
 <div class="wrap">
-  <select [(ngModel)]="option" (change)="onSelect()" name="" id="">
-    <option value="1">top 10</option>
-    <option value="2">cheap</option>
-    <option value="3">best</option>
-  </select>
+  <h2 [ngStyle]="{ color: option ? 'red' : null }">Exploding</h2>
+  <label class="switch">
+    <input [(ngModel)]="option" (change)="onSelect()" type="checkbox" />
+    <span class="slider round"></span>
+  </label>
 </div>

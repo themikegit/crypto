@@ -1,5 +1,45 @@
 .wrap {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
   padding: 2% 5%;
+  .brand {
+    flex: 1 0 0;
+    .logo {
+      height: 50px;
+      width: 230px;
+      background-image: url("/assets/logoComplete.svg");
+      background-repeat: no-repeat;
+    }
+  }
+  .search {
+    display: flex;
+    justify-content: center;
+    flex: 1 1 0;
+  }
+  .links {
+    display: flex;
+    justify-content: flex-end;
+    flex: 1 0 0;
+
+    min-width: 50px;
+  }
+}
+
+@media only screen and (max-device-width: 736px) {
+  .wrap {
+    flex-direction: column;
+    .brand {
+      order: -2;
+      .logo {
+        height: 30px;
+        width: 200px;
+      }
+    }
+
+    .links {
+      order: -1;
+      margin-bottom: 5px;
+    }
+  }
 }

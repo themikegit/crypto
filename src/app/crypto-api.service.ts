@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map, filter } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { Subject } from 'rxjs';
 
 @Injectable({
@@ -12,21 +12,23 @@ export class CryptoApiService {
     this.coinsRes = new Subject();
   }
 
-  getCoins(num) {
-    return this.http
-      .get(`https://api.coinpaprika.com/v1/tickers`)
-      .pipe(
-        map((coins: any) =>
-          coins.filter((coin) => coin.rank < num && coin.rank > 0)
+  getCoins(num = 100, volumeValue = 10) {
+    return this.http.get(`https://api.coinpaprika.com/v1/tickers`).pipe(
+      // tap((res) => console.log(res, 'tap')),
+      map((coins: any) =>
+        coins.filter(
+          (coin: any, index: number) =>
+            index < num && coin.quotes.USD.volume_24h > volumeValue
         )
-      );
+      )
+    );
   }
 
-  getCoinDetails(coin_id) {
+  getCoinDetails(coin_id: string) {
     return this.http.get(`https://api.coinpaprika.com/v1/coins/${coin_id}`);
   }
 
-  getCoinHistory(coin_id) {
+  getCoinHistory(coin_id: string) {
     return this.http.get(`https://api.coinpaprika.com/v1/tickers/${coin_id}`);
   }
 }
