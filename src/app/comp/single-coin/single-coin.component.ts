@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { BuildChartService } from 'src/app/build-chart.service';
 
 @Component({
@@ -8,17 +10,27 @@ import { BuildChartService } from 'src/app/build-chart.service';
 })
 export class SingleCoinComponent implements OnInit {
   @Input() singleCoin: any;
-  constructor(private buildChart: BuildChartService) {}
-
-  exploding: boolean;
+  constructor(
+    private buildChart: BuildChartService,
+    private http: HttpClient
+  ) {}
+  chimpForm: FormGroup;
+  growth;
+  onSubmit() {
+    console.log('hello');
+    this.http.post(
+      'https://gmail.us1.list-manage.com/subscribe/post',
+      this.chimpForm.value
+    );
+  }
   ngOnInit(): void {
-    // @Comment - again MAGIC Number
-    if (this.singleCoin.quotes.USD.volume_24h > 1_500_000_000) {
-      this.exploding = true;
-    }
+    let arr = this.singleCoin.ohlc;
+    let first = arr[0].close;
+    let last = arr[360].close;
+    this.growth = ((last - first) / first) * 100;
   }
 
   ngAfterViewInit(): void {
-    this.buildChart.buildChart(this.singleCoin.id, this.singleCoin.quotes.USD);
+    this.buildChart.buildChart(this.singleCoin.id, this.singleCoin.ohlc);
   }
 }

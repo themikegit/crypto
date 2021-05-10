@@ -3,9 +3,9 @@
   align-items: center;
   flex-direction: column;
   position: relative;
+  max-width: 1980px;
   app-loader {
     position: absolute;
-
     left: 50vw;
   }
   .wrap {

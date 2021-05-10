@@ -1,12 +1,4 @@
 <div class="outer">
-  <pagination-controls
-    class="my-pagination"
-    directionLinks="false"
-    previousLabel=""
-    nextLabel=""
-    (pageBoundsCorrection)="p = $event"
-    (pageChange)="p = $event"
-  ></pagination-controls>
   <ng-template [ngIf]="isLoading">
     <app-loader></app-loader>
   </ng-template>
@@ -26,4 +18,12 @@
       <h1>NO RESULTS FOUND</h1>
     </ng-template>
   </div>
+  <pagination-controls
+    class="my-pagination"
+    directionLinks="false"
+    previousLabel=""
+    nextLabel=""
+    (pageBoundsCorrection)="p = $event"
+    (pageChange)="p = $event"
+  ></pagination-controls>
 </div>

@@ -13,15 +13,15 @@ export class FilterComponent {
   option = false;
   explodingLimit = 1_500_000_000;
 
-  onSelect() {
-    if (this.option) {
-      this.cryptoApi
-        .getCoins(undefined, this.explodingLimit)
-        .subscribe((res) => this.cryptoApi.coinsRes.next(res));
-    } else {
-      this.cryptoApi
-        .getCoins(undefined, 10)
-        .subscribe((res) => this.cryptoApi.coinsRes.next(res));
-    }
-  }
+  // onSelect() {
+  //   if (this.option) {
+  //     this.cryptoApi
+  //       .getCoins(undefined, this.explodingLimit)
+  //       .subscribe((res) => this.cryptoApi.coinsRes.next(res));
+  //   } else {
+  //     this.cryptoApi
+  //       .getCoins(undefined, 10)
+  //       .subscribe((res) => this.cryptoApi.coinsRes.next(res));
+  //   }
+  // }
 }

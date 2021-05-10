@@ -11,42 +11,39 @@ import { CryptoApiService } from 'src/app/crypto-api.service';
   styleUrls: ['./coin-details.component.scss'],
 })
 export class CoinDetailsComponent implements OnInit {
+  idRt: string;
+  coinComplete: any[];
+  isLoading = true;
+  growth: number;
+  coinDetails;
+  coinHistory;
+  coinTicker;
+
   constructor(
     private route: ActivatedRoute,
     private cryptoApi: CryptoApiService,
     private chart: BuildChartService
   ) {
     this.idRt = this.route.snapshot.params.id;
+    this.coinDetails = this.cryptoApi.getCoinDetails(this.idRt);
+    this.coinHistory = this.cryptoApi.getCoinHistory(this.idRt);
+    this.coinTicker = this.cryptoApi.getTicker(this.idRt);
   }
 
-  idRt: string;
-  coinComplete: any[];
-  isLoading = true;
+  calcGrowth(first: number, last: number) {
+    return ((last - first) / first) * 100;
+  }
 
   ngOnInit() {
-    // **** details as observable. use async pipe in component. How to take data for chart ****
-    // this.details$ = forkJoin([coinDetails, coinHistory]);
-
-    // **** Concat operator - solution for nested observables. bad in this case ****
-    // this.cryptoApi
-    //   .getCoinDetails(this.idRt)
-    //   .pipe(
-    //     tap((res) => console.log('result first', res)),
-    //     concatMap((res) => this.cryptoApi.getCoinHistory(this.idRt)),
-    //     tap((res) => console.log('result second', res))
-    //   )
-    //   .subscribe((res) => console.log('result total', res));
-  }
-
-  ngAfterViewInit() {
-    let coinDetails = this.cryptoApi.getCoinDetails(this.idRt);
-    let coinHistory = this.cryptoApi.getCoinHistory(this.idRt);
-
-    forkJoin([coinDetails, coinHistory]).subscribe((res) => {
-      this.coinComplete = res;
-      this.isLoading = false;
-
-      this.chart.buildChart(this.idRt, this.coinComplete[1].quotes.USD);
-    });
+    forkJoin([this.coinDetails, this.coinHistory, this.coinTicker]).subscribe(
+      (res) => {
+        this.coinComplete = res;
+        this.isLoading = false;
+        let arr = this.coinComplete[1];
+        this.growth = this.calcGrowth(arr[0].close, arr[360].close);
+        this.chart.buildChart(this.idRt, this.coinComplete[1]);
+        console.log(this.coinComplete);
+      }
+    );
   }
 }

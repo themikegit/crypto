@@ -8,22 +8,28 @@ export class BuildChartService {
   constructor() {}
 
   buildChart(id: string, data: any) {
-    // console.log(document.getElementById(id));
     Chart.defaults.global.legend.display = false;
     Chart.defaults.scale.gridLines.display = false;
     new Chart(id, {
       type: 'line',
       data: {
-        labels: ['15min', '30min', '1h', '6h', '12h', '24h'],
+        labels: ['Jan', '', '', '', '', '', '', '', '', '', '', 'Dec'],
         datasets: [
           {
             data: [
-              data.percent_change_15m,
-              data.percent_change_30m,
-              data.percent_change_1h,
-              data.percent_change_6h,
-              data.percent_change_12h,
-              data.percent_change_24h,
+              data[0].high,
+              data[30].high,
+              data[60].high,
+              data[90].high,
+              data[120].high,
+              data[150].high,
+              data[180].high,
+              data[210].high,
+              data[240].high,
+              data[270].high,
+              data[300].high,
+              data[330].high,
+              data[360].high,
             ],
 
             backgroundColor: [['#92c9ff31']],

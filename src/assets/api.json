@@ -1,0 +1,56 @@
+[
+  {
+    "id": "btc-bitcoin",
+    "name": "Bitcoin",
+    "symbol": "BTC",
+    "status": "exploding"
+  },
+  {
+    "id": "eth-ethereum",
+    "name": "Ethereum",
+    "symbol": "ETH",
+    "status": "exploding"
+  },
+  {
+    "id": "bnb-binance-coin",
+    "name": "Binance Coin",
+    "symbol": "BNB",
+    "status": "growing"
+  },
+  {
+    "id": "xrp-xrp",
+    "name": "XRP",
+    "symbol": "XRP",
+    "status": "growing"
+  },
+  {
+    "id": "usdt-tether",
+    "name": "Tether",
+    "symbol": "USDT",
+    "status": "trending"
+  },
+  {
+    "id": "ltc-litecoin",
+    "name": "Litecoin",
+    "symbol": "LTC",
+    "status": "trending"
+  },
+  {
+    "id": "bch-bitcoin-cash",
+    "name": "Bitcoin Cash",
+    "symbol": "BCH",
+    "status": "trending"
+  },
+  {
+    "id": "doge-dogecoin",
+    "name": "Dogecoin",
+    "symbol": "DOGE",
+    "status": "trending"
+  },
+  {
+    "id": "zil-zilliqa",
+    "name": "Zilliqa",
+    "symbol": "ZIL",
+    "status": "haha"
+  }
+]

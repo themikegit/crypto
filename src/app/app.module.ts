@@ -22,6 +22,9 @@ import { SearchComponent } from './comp/search/search.component';
 import { FilterCoinsPipe } from './filter-coins.pipe';
 //directives
 import { SpecialHoverDirective } from './special-hover.directive';
+import { FormatNumberPipe } from './format-number.pipe';
+import { DecimalPipe } from '@angular/common';
+import { MailChimpComponent } from './comp/mail-chimp/mail-chimp.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -46,6 +49,8 @@ const routes: Routes = [
     SearchComponent,
     FilterCoinsPipe,
     SpecialHoverDirective,
+    FormatNumberPipe,
+    MailChimpComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,7 +60,7 @@ const routes: Routes = [
     NgxPaginationModule,
     RouterModule.forRoot(routes),
   ],
-  providers: [],
+  providers: [DecimalPipe],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -21,9 +21,10 @@ export class AllCoinsComponent implements OnInit {
 
   getAllCoins() {
     // subscribe to API result and update subject with the result.
-    this.cryptoApi
-      .getCoins()
-      .subscribe((res) => this.cryptoApi.coinsRes.next(res));
+
+    this.cryptoApi.getCoins().subscribe((res) => {
+      this.cryptoApi.coinsRes.next(res);
+    });
   }
 
   setAllCoins() {

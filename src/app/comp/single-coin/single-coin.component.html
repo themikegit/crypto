@@ -1,66 +1,37 @@
-<div routerLink="/coin/{{ singleCoin.id }}" class="wrap">
-  <div class="header">
-    <div class="header-top">
-      <div class="title">
-        <h2>{{ singleCoin.name }}</h2>
-        <h3>{{ singleCoin.symbol }}</h3>
+<ng-template #name>
+  <app-mail-chimp></app-mail-chimp>
+</ng-template>
+<div *ngIf="singleCoin.symbol != 'BNB'; else name" class="wrap">
+  <div routerLink="/coin/{{ singleCoin.id }}">
+    <div class="header">
+      <div class="header-top">
+        <div class="title">
+          <h2>{{ singleCoin.name }}</h2>
+          <h3>{{ singleCoin.symbol }}</h3>
+        </div>
+        <div class="tag">
+          <h4>{{ singleCoin.status }}</h4>
+        </div>
       </div>
-      <div
-        [ngStyle]="{
-          'background-color': exploding ? 'red' : 'green'
-        }"
-        class="tag"
-      >
-        <h4 *ngIf="exploding; else reg">EXPLODING</h4>
-        <ng-template #reg>
-          <h4>REGULAR</h4>
-        </ng-template>
-      </div>
-    </div>
-    <div class="price">
-      <h2>{{ singleCoin.quotes.USD.price | currency }}</h2>
-    </div>
-  </div>
-  <div class="stats">
-    <div class="daily">
-      <h5>24 hour</h5>
-      <p>{{ singleCoin.quotes.USD.volume_24h_change_24h }} %</p>
-    </div>
-    <div class="market-cap">
-      <h5>market cap</h5>
-      <div class="value">
-        <svg
-          width="1em"
-          height="1em"
-          [ngClass]="{
-            'status-green': singleCoin.quotes.USD.market_cap_change_24h > 0,
-            'status-red': singleCoin.quotes.USD.market_cap_change_24h < 0
-          }"
-          viewBox="0 0 16 16"
-        >
-          <path
-            d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"
-          />
-        </svg>
-        <p>{{ singleCoin.quotes.USD.market_cap_change_24h }} %</p>
+      <div class="price">
+        <h2>{{ singleCoin.price | currency }}</h2>
       </div>
     </div>
-    <div class="searches">
-      <h5>searches/mo</h5>
-      <p>2.9K</p>
+
+    <div class="stats">
+      <div class="daily">
+        <h5>Volume</h5>
+        <p>
+          {{ singleCoin.volume | formatNumber }}
+        </p>
+      </div>
+      <div class="daily">
+        <h5>Growth</h5>
+        <p>{{ growth | number: "1.2-2" }} %</p>
+      </div>
     </div>
-    <div class="growth">
-      <h5>growth</h5>
-      <p>880%</p>
+    <div class="chartwrap">
+      <canvas id="{{ singleCoin.id }}"></canvas>
     </div>
-  </div>
-  <div class="description">
-    <p>
-      Bitcoin is a cryptocurrency and worldwide payment system. It is the first
-      decentralized digital...
-    </p>
-  </div>
-  <div class="chartwrap">
-    <canvas id="{{ singleCoin.id }}"></canvas>
   </div>
 </div>

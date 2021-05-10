@@ -1,6 +1,7 @@
 @import "./../../variables";
 
 .wrap {
+  z-index: 999;
   input {
     border: 1px solid $blue;
     border-radius: 7px;
