@@ -8,8 +8,11 @@ import { forkJoin, Observable, of, Subject } from 'rxjs';
 })
 export class CryptoApiService {
   coinsRes;
+  oneCoin;
+
   constructor(private http: HttpClient) {
     this.coinsRes = new Subject();
+    this.oneCoin = new Subject();
   }
   awsArr = [];
   generalData = [];
@@ -62,18 +65,18 @@ export class CryptoApiService {
     );
   }
 
-  getCoinDetails(coin_id: string) {
-    return this.http.get(`https://api.coinpaprika.com/v1/coins/${coin_id}`);
-  }
+  // getCoinDetails(coin_id: string) {
+  //   return this.http.get(`https://api.coinpaprika.com/v1/coins/${coin_id}`);
+  // }
 
-  getTicker(coin_id: string) {
-    return this.http.get(`https://api.coinpaprika.com/v1/tickers/${coin_id}`);
-  }
+  // getTicker(coin_id: string) {
+  //   return this.http.get(`https://api.coinpaprika.com/v1/tickers/${coin_id}`);
+  // }
 
-  getCoinHistory(coin_id: string) {
-    let current = new Date().toISOString();
-    return this.http.get(
-      `https://api.coinpaprika.com/v1/coins/${coin_id}/ohlcv/historical?start=${this.createDateParam()}&end=${current}`
-    );
-  }
+  // getCoinHistory(coin_id: string) {
+  //   let current = new Date().toISOString();
+  //   return this.http.get(
+  //     `https://api.coinpaprika.com/v1/coins/${coin_id}/ohlcv/historical?start=${this.createDateParam()}&end=${current}`
+  //   );
+  // }
 }

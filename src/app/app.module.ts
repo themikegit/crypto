@@ -9,27 +9,25 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './views/home/home.component';
 import { AllCoinsComponent } from './comp/all-coins/all-coins.component';
 import { SingleCoinComponent } from './comp/single-coin/single-coin.component';
-import { CoinDetailsComponent } from './views/coin-details/coin-details.component';
 import { HeaderComponent } from './comp/header/header.component';
 import { HeroComponent } from './comp/hero/hero.component';
 import { NavigationComponent } from './comp/navigation/navigation.component';
 import { LoaderComponent } from './comp/loader/loader.component';
-import { FilterComponent } from './comp/filter/filter.component';
-import { GoProComponent } from './views/go-pro/go-pro.component';
 import { ThickComponent } from './comp/thick/thick.component';
 import { SearchComponent } from './comp/search/search.component';
 //pipes
 import { FilterCoinsPipe } from './filter-coins.pipe';
-//directives
-import { SpecialHoverDirective } from './special-hover.directive';
 import { FormatNumberPipe } from './format-number.pipe';
 import { DecimalPipe } from '@angular/common';
+//directives
+import { SpecialHoverDirective } from './special-hover.directive';
+
 import { MailChimpComponent } from './comp/mail-chimp/mail-chimp.component';
+import { CoinTemplateComponent } from './views/coin-template/coin-template.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'go-pro', component: GoProComponent },
-  { path: 'coin/:id', component: CoinDetailsComponent },
+  { path: 'coin/:id', component: CoinTemplateComponent },
 ];
 
 @NgModule({
@@ -38,19 +36,17 @@ const routes: Routes = [
     HomeComponent,
     AllCoinsComponent,
     SingleCoinComponent,
-    CoinDetailsComponent,
     HeaderComponent,
     HeroComponent,
     NavigationComponent,
     LoaderComponent,
-    FilterComponent,
-    GoProComponent,
     ThickComponent,
     SearchComponent,
     FilterCoinsPipe,
     SpecialHoverDirective,
     FormatNumberPipe,
     MailChimpComponent,
+    CoinTemplateComponent,
   ],
   imports: [
     BrowserModule,
