@@ -65,6 +65,17 @@ export class CryptoApiService {
     );
   }
 
+  getSinglCoin(id) {
+    let current = new Date().toISOString();
+    let aws = this.http.get('assets/api.json');
+    let ohlc = this.http.get(
+      `https://api.coinpaprika.com/v1/coins/${id}/ohlcv/historical?start=${this.createDateParam()}&end=${current}`
+    );
+
+    let tick = this.http.get(`https://api.coinpaprika.com/v1/tickers/${id}`);
+    return forkJoin([ohlc, tick, aws]);
+  }
+
   // getCoinDetails(coin_id: string) {
   //   return this.http.get(`https://api.coinpaprika.com/v1/coins/${coin_id}`);
   // }

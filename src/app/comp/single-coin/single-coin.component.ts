@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { BuildChartService } from 'src/app/build-chart.service';
-import { CryptoApiService } from 'src/app/crypto-api.service';
+import { GrowthServiceService } from 'src/app/growth-service.service';
 
 @Component({
   selector: 'app-single-coin',
@@ -11,17 +11,15 @@ export class SingleCoinComponent implements OnInit {
   @Input() singleCoin: any;
   constructor(
     private buildChart: BuildChartService,
-    private cryptoSrv: CryptoApiService
+    private growthServ: GrowthServiceService
   ) {}
 
   growth;
 
   ngOnInit(): void {
-    this.cryptoSrv.oneCoin.next(this.singleCoin);
+    // this.cryptoSrv.oneCoin.next(this.singleCoin);
     let arr = this.singleCoin.ohlc;
-    let first = arr[0].close;
-    let last = arr[360].close;
-    this.growth = ((last - first) / first) * 100;
+    this.growth = this.growthServ.calcGrowth(arr[0].close, arr[360].close);
   }
 
   ngAfterViewInit(): void {

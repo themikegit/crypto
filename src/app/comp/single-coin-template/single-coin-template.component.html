@@ -1,0 +1,53 @@
+<div class="outer">
+  <div class="wrap">
+    <div routerLink="/" class="close">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="41"
+        height="41"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="#233DBD"
+        stroke-width="2.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </div>
+    <div class="header">
+      <div class="header-top">
+        <div class="title">
+          <h2>{{ coin.name }}</h2>
+          <h3>{{ coin.symbol }}</h3>
+        </div>
+        <div *ngIf="!isLoading" class="tag">
+          <h4>{{ status }}</h4>
+        </div>
+      </div>
+      <div class="price">
+        <h2>{{ coin.price | currency }}</h2>
+      </div>
+    </div>
+    <ng-template #spin>
+      <app-loader></app-loader>
+    </ng-template>
+
+    <div *ngIf="!isLoading; else spin" class="stats">
+      <div class="daily">
+        <h5>Volume</h5>
+        <p>
+          {{ coin.quotes.USD.volume_24h | formatNumber }}
+        </p>
+      </div>
+      <div class="daily">
+        <h5>Growth</h5>
+        <p>{{ growth | number: "1.2-2" }} %</p>
+      </div>
+    </div>
+    <div class="chartwrap">
+      <canvas id="{{ routeSub.id }}"></canvas>
+    </div>
+  </div>
+</div>

@@ -24,6 +24,7 @@ import { SpecialHoverDirective } from './special-hover.directive';
 
 import { MailChimpComponent } from './comp/mail-chimp/mail-chimp.component';
 import { CoinTemplateComponent } from './views/coin-template/coin-template.component';
+import { SingleCoinTemplateComponent } from './comp/single-coin-template/single-coin-template.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -47,6 +48,7 @@ const routes: Routes = [
     FormatNumberPipe,
     MailChimpComponent,
     CoinTemplateComponent,
+    SingleCoinTemplateComponent,
   ],
   imports: [
     BrowserModule,

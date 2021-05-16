@@ -7,7 +7,7 @@ import { Chart } from 'node_modules/chart.js';
 export class BuildChartService {
   constructor() {}
 
-  buildChart(id: string, data: any) {
+  buildChart(id?: string, data?: any) {
     Chart.defaults.global.legend.display = false;
     Chart.defaults.scale.gridLines.display = false;
     new Chart(id, {

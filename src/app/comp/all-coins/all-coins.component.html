@@ -11,12 +11,19 @@
     >
     </app-single-coin>
   </div>
-  <pagination-controls
-    class="my-pagination"
-    directionLinks="false"
-    previousLabel=""
-    nextLabel=""
-    (pageBoundsCorrection)="p = $event"
-    (pageChange)="p = $event"
-  ></pagination-controls>
 </div>
+<ng-template [ngIf]="!isLoading">
+  <div class="foot">
+    <div class="total">
+      <h4>total: {{ allCoins.length }}</h4>
+    </div>
+    <pagination-controls
+      class="my-pagination"
+      directionLinks="false"
+      previousLabel=""
+      nextLabel=""
+      (pageBoundsCorrection)="p = $event"
+      (pageChange)="p = $event"
+    ></pagination-controls>
+  </div>
+</ng-template>

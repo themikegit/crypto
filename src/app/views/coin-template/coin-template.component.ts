@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { BuildChartService } from 'src/app/build-chart.service';
+import { map, filter } from 'rxjs/operators';
+import { CryptoApiService } from 'src/app/crypto-api.service';
+import { GrowthServiceService } from 'src/app/growth-service.service';
 
 @Component({
   selector: 'app-coin-template',

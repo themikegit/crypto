@@ -11,7 +11,7 @@ export class HeaderComponent implements OnInit {
 
   coins;
   ngOnInit(): void {
-    this.cryptoApi.getCoins().subscribe((res) => {
+    this.cryptoApi.coinsRes.subscribe((res) => {
       this.coins = res;
     });
   }
